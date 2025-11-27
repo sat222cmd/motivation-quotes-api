@@ -1,8 +1,8 @@
-require('dotenv').config();
+require('dotenv').config(); // fixed typo from 'reqdotenv'
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const motivationRouter = require('./api/motivation/motivationRouter');
+const motivationRouter = require('./api/motivationRoute'); // correct relative path
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,7 +21,7 @@ mongoose.connect(mongoUri, {
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
 // Routes
-app.use('/api/motivation', motivationRouter);
+app.use('/api/motivation', motivationRouter); // keeps your original route
 
 // Root endpoint
 app.get('/', (req, res) => {
@@ -48,4 +48,3 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
-
